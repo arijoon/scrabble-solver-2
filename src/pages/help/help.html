@@ -1,0 +1,104 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Help</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div class="card help-basic">
+    <div class="item item-divider">
+      Basic Usage
+    </div>
+    <div class="item item-text-wrap">
+      <p>
+        Enter your scrabble characters into
+        <strong>Available Characters</strong> box. And enter your desired format into
+        <strong>Word Format</strong> box (add number before character to repeat that character).
+        <br>
+        <small>Look at the list of available formatting options</small>
+      </p>
+      <br/>
+      <h2>Example:</h2>
+      <p>
+        <img class="image-screen" src="assets/imgs/help/firstEgBefore.png" />
+      </p>
+      <p>In order to find a match for the image bellow:
+        <br/>
+        <img src="assets/imgs/help/firstEg.png" class="help-image">
+        <br />
+        <img src="assets/imgs/help/firstEgResult.png" class="help-image">
+      </p>
+      <p>Inserting those words into the puzzel grants us
+        <strong>24</strong> points</p>
+      <p>
+        <img src="assets/imgs/help/firstEgAfter.png" class="image-screen" />
+      </p>
+      <p>
+        <strong>&#9733;</strong> Please note that this app is meant for you to guess the best position for a new word. It'll only
+        come up with the possibilities you can place there. This will grant you an excellent opportunity to score using letter
+        and word quantifiers
+      </p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="item item-divider">
+      Formatting Options
+    </div>
+    <div class="item item-text-wrap centre-first-col">
+
+      <div class="row row-header">
+        <div class="col">
+          Character
+        </div>
+        <div class="col">
+          Definition
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          |
+        </div>
+        <div class="col">
+          One or none of any characters in
+          <strong>Available Characters</strong> (may or may not exist)
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          ?
+        </div>
+        <div class="col">
+          One of Any characters in
+          <strong>Available Characters</strong>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          _
+        </div>
+        <div class="col">
+          Single character from
+          <strong>A-Z</strong>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          !
+        </div>
+        <div class="col">
+          One or none of any characters from
+          <strong>A-Z</strong> (may or may not exist)
+        </div>
+      </div>
+
+    </div>
+  </div>
+</ion-content>
