@@ -1,4 +1,4 @@
-# Scrabble solver
+# Scrabble solver ported to the latest angular and ionic
 
 ## An app made to help you generate words that match the dictionary
 
@@ -14,13 +14,13 @@ you can view the help section after running the app:
 
 ### example1:
 
-![first example](www/res/help/firstEg.png)
-![first example](www/res/help/firstEgAfter.png)
+![first example](src/assets/imgs/help/firstEg.png)
+![first example](src/assets/imgs/help/firstEgAfter.png)
 
 ### example 2
 
-![second example](www/res/help/firstEgBefore.png)
-![second example](www/res/help/firstEgResult.png)
+![second example](src/assets/imgs/help/firstEgBefore.png)
+![second example](src/assets/imgs/help/firstEgResult.png)
 
 
 ### The table of wildcards:
