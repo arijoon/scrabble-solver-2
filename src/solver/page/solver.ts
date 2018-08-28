@@ -11,7 +11,7 @@ const maxFormatLength = 20;
 })
 export class SolverPage {
   // Template variables
-  preventDuplicates = true;
+  preventDuplicates = false;
   searching = true;
   characters = "";
   wordFormat = "";
