@@ -24,6 +24,7 @@
         </ion-label>
         <ion-input type="text" formControlName="wordFormat"></ion-input>
       </ion-item>
+      <div hidden></div> <!-- Fix for 13218 -->
     </div>
       <ion-item>
         <ion-label>
@@ -38,13 +39,15 @@
         </ion-label>
         <ion-input type="text" [(ngModel)]="settings.duplicatesWhitelist"></ion-input>
       </ion-item>
-  
+
+      <div hidden></div> <!-- Fix for 13218 -->
     </ion-list>
   </ion-card>
 
-  <button ion-button block (click)="findMatch()" class="submit-button" [disabled]="!forms.valid">
-    Find Match
-  </button>
+  <ion-fab right bottom>
+    <button ion-fab color="success" (click)="findMatch()" [hidden]="!forms.valid">
+      <ion-icon name="play"></ion-icon></button>
+  </ion-fab>
 
   <ion-card *ngIf="matches && matches.length > 0">
     <!-- <div class="item item-icon-left">
