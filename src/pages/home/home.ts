@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
 import { HelpPage } from './../help/help';
+import { SolverPage } from '../../solver';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +15,7 @@ export class HomePage {
 
   constructor(public navCtrl: NavController) {
     this.items = [
-      { component: HomePage, title: 'Solve', text: 'dive into the word solver', icon: 'play' },
+      { component: SolverPage, title: 'Solve', text: 'dive into the word solver', icon: 'play' },
       { component: HelpPage, title: 'Help', text: 'learn how to use the app', icon: 'information-circle' }
     ];
 

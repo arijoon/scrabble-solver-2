@@ -8,11 +8,11 @@
 </ion-header>
 
 <ion-content padding>
-  <div class="card home-card">
-    <div class="item item-balanced">
+  <ion-card>
+    <ion-card-header>
       Welcome
-    </div>
-    <div class="item item-body">
+    </ion-card-header>
+    <ion-card-content>
       <p>
         This is an advanced word constructor, use it to construct specific words especially to win points in scrabble games. This
         app provides a comprehensive interface for you to make use of letter/word quantifiers (DL, DW, TL, TW).
@@ -20,7 +20,7 @@
       <p>
         Please select your option from menu bellow
       </p>
-    </div>
+    </ion-card-content>
     <ion-list>
       <ion-item *ngFor="let item of items" (click)="openPage(item)">
         <ion-icon [name]="item.icon" item-start></ion-icon>
@@ -30,5 +30,5 @@
         </p>
       </ion-item>
     </ion-list>
-  </div>
+  </ion-card>
 </ion-content>

@@ -1,3 +1,7 @@
 page-help {
+  $border-gray: rgba(0,0,0,.8);
   .image-screen { width: 250px; }
+  .help-image { width: 250px; }
+  .row-header { font-weight: bold; border-bottom: solid 2px $border-gray; margin-bottom: 5px; }
+  .center-align:not(.row-header) .col:first-of-type { text-align: center; }
 }

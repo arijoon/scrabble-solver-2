@@ -9,6 +9,8 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { HelpPage } from '../pages/help/help';
+import { DictionaryService, SolverPage } from '../solver';
+
 
 @NgModule({
   declarations: [
@@ -16,6 +18,7 @@ import { HelpPage } from '../pages/help/help';
     HomePage,
     ListPage,
     HelpPage,
+    SolverPage
   ],
   imports: [
     BrowserModule,
@@ -26,11 +29,13 @@ import { HelpPage } from '../pages/help/help';
     MyApp,
     HomePage,
     ListPage,
-    HelpPage
+    HelpPage,
+    SolverPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    DictionaryService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

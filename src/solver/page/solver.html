@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Solver</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-list>
+    <div [formGroup]="forms">
+      <ion-item>
+        <ion-label floating>
+          Available Characters
+        </ion-label>
+        <ion-input type="text" formControlName="characters"></ion-input>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label floating>
+          Word Format
+        </ion-label>
+        <ion-input type="text" formControlName="wordFormat"></ion-input>
+      </ion-item>
+    </div>
+      <ion-item>
+        <ion-label>
+          Prevent Duplicates
+        </ion-label>
+        <ion-toggle [(ngModel)]="preventDuplicates"></ion-toggle>
+      </ion-item>
+  
+      <ion-item [hidden]="!preventDuplicates">
+        <ion-label floating>
+          Whitelisted duplicates
+        </ion-label>
+        <ion-input type="text" [(ngModel)]="settings.duplicatesWhitelist"></ion-input>
+      </ion-item>
+  
+    </ion-list>
+  </ion-card>
+
+  <button ion-button block (click)="findMatch()" class="submit-button" [disabled]="!forms.valid">
+    Find Match
+  </button>
+
+  <ion-card *ngIf="matches && matches.length > 0">
+    <!-- <div class="item item-icon-left">
+            <i class="icon ion-search"></i>
+            <input placeholder="Search within result" type="text" ng-model="resultSearch">
+          </div> -->
+
+    <ion-card-header>Found {{ matches.length }} words overall</ion-card-header>
+    <ion-list>
+      <ion-list-header>
+        <span class="small">Order by</span>
+        <a class="link" (click)="sortMatches('length')">length</a>
+        |
+        <a class="link" (click)="sortMatches('score')">Score</a>
+      </ion-list-header>
+      <ion-item class="item" *ngFor="let item of matches">
+        {{ item }} : {{ matchDic[item] }}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  <ion-card *ngIf="matches.length == 0 && !searching">
+    <ion-card-header>
+      No results found {{ matches.length }}
+    </ion-card-header>
+  </ion-card>
+</ion-content>
