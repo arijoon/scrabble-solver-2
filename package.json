@@ -9,6 +9,7 @@
     "clean": "ionic-app-scripts clean",
     "build": "ionic-app-scripts build",
     "build:prod": "ionic cordova build android --prod --release",
+    "deploy": "npm run build:prod && .\\deploy.bat",
     "run:android": "ionic cordova run android --device",
     "lint": "ionic-app-scripts lint"
   },
