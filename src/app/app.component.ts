@@ -44,7 +44,6 @@ export class MyApp {
       this.splashScreen.hide();
 
       const pageId = await this.storage.get(pageKey);
-      console.log("Reading storage", pageId);
 
       if (pageId) {
         this.pages.forEach((page) => {
@@ -59,7 +58,6 @@ export class MyApp {
   openPage(page) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
-    console.log("setting page");
     this.storage.set(pageKey, page.id);
     this.nav.setRoot(page.component);
   }
