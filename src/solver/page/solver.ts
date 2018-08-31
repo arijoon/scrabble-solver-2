@@ -1,9 +1,19 @@
 import { DictionaryService } from './../dictionary.service';
 import { Component } from '@angular/core';
+import { Storage } from '@ionic/storage';
 import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { FormBuilder, FormControl, Validators } from '../../../node_modules/@angular/forms';
 
 const maxFormatLength = 20;
+
+const storageKey = 'solverState';
+
+interface ISolverState {
+  characters: string;
+  wordFormat: string;
+  preventDuplicates: boolean;
+  whiteList: string;
+}
 
 @Component({
   selector: 'page-solver',
@@ -13,13 +23,11 @@ export class SolverPage {
   // Template variables
   preventDuplicates = false;
   searching = true;
-  characters = "";
-  wordFormat = "";
 
   // Temp values
   matchDic: any = null;
   matches: string[] = [];
-  settings: any = {
+  settings = {
     duplicatesWhitelist: ""
   };
 
@@ -32,8 +40,8 @@ export class SolverPage {
   constructor(public navCtrl: NavController,
      public loadingCtrl: LoadingController,
      private fb: FormBuilder,
+     private storage: Storage,
      private dictionaries: DictionaryService) {
-    this.setDebugValues();
 
     this.forms = fb.group({
       characters: new FormControl('', Validators.compose([
@@ -45,17 +53,48 @@ export class SolverPage {
         Validators.required,
         Validators.pattern(this.wordFormatPattern)
       ]))
-    })
+    });
+
+    this.restoreState();
   }
 
   public routerCanReuse(): boolean {
     return true;
   }
 
+  private restoreState() {
+    this.storage.get(storageKey).then((raw) => {
+      if(!raw) return;
+
+      const obj: ISolverState = JSON.parse(raw);
+
+      this.forms.patchValue({
+        characters: obj.characters,
+        wordFormat: obj.wordFormat
+      });
+
+      this.preventDuplicates = obj.preventDuplicates;
+      this.settings.duplicatesWhitelist = obj.whiteList;
+
+    }).catch((err) => {
+      console.error("Failed to restore state", err);
+    });
+  }
+
+  private storeState(characters, wordFormat, preventDuplicates, whiteList) {
+    const obj = {
+      characters, wordFormat, preventDuplicates, whiteList
+    };
+
+    this.storage.set(storageKey, JSON.stringify(obj));
+  }
+
   public async findMatch() {
     let characters = this.forms.value['characters'];
     let wordFormat = this.forms.value['wordFormat'];
     this.searching = true;
+
+    this.storeState(characters, wordFormat, this.preventDuplicates, this.settings.duplicatesWhitelist);
 
     this.load(true);
 
@@ -259,10 +298,5 @@ export class SolverPage {
     }
 
     return result;
-  }
-
-  private setDebugValues() {
-    this.characters = "qoftvdw";
-    this.wordFormat = "||||a||||"
   }
 }
