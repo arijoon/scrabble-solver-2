@@ -10,7 +10,7 @@
     "build": "ionic-app-scripts build",
     "build:prod": "ionic cordova build android --prod --release",
     "deploy": "npm run build:prod && .\\deploy.bat",
-    "run:android": "ionic cordova run android --device",
+    "run:android": "ionic cordova run android --device --debug",
     "lint": "ionic-app-scripts lint"
   },
   "dependencies": {

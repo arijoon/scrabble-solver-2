@@ -68,41 +68,43 @@ export class SolverPage {
 
     return new Promise((resolve, reject) => {
 
-      const innerFind = (wordFormat) => {
+      setTimeout(() => {
+        const innerFind = (wordFormat) => {
 
-        const afterSpecialConversion = this.applyStaticConversions(wordFormat, characters),
-          myRegex = new RegExp("^" + afterSpecialConversion + "$", "gi");
+          const afterSpecialConversion = this.applyStaticConversions(wordFormat, characters),
+            myRegex = new RegExp("^" + afterSpecialConversion + "$", "gi");
 
-        console.log(myRegex);
+          console.log(myRegex);
 
-        const wordlist = this.dictionaries.wordlist;
-        for (let key in wordlist) {
+          const wordlist = this.dictionaries.wordlist;
+          for (let key in wordlist) {
 
-          if (!wordlist.hasOwnProperty(key) || this.matchDic[key]) continue;
+            if (!wordlist.hasOwnProperty(key) || this.matchDic[key]) continue;
 
-          if (myRegex.test(key) && this.checkAdditional(key)) {
+            if (myRegex.test(key) && this.checkAdditional(key)) {
 
-            this.matchDic[key] = this.calculateScore(key);
+              this.matchDic[key] = this.calculateScore(key);
+            }
           }
         }
-      }
 
-      if (obj.shouldBrute) {
+        if (obj.shouldBrute) {
 
-        characters = obj.characters;
+          characters = obj.characters;
 
-        const possibleFormats = this.generatePossibleFormats(wordFormat);
+          const possibleFormats = this.generatePossibleFormats(wordFormat);
 
-        for (let i = 0; i < possibleFormats.length; i++) {
-          innerFind(possibleFormats[i]);
+          for (let i = 0; i < possibleFormats.length; i++) {
+            innerFind(possibleFormats[i]);
+          }
+
+        } else {
+
+          innerFind(wordFormat);
         }
 
-      } else {
-
-        innerFind(wordFormat);
-      }
-
-      resolve();
+        resolve();
+      }, 300);
 
     }).then(() => {
 
