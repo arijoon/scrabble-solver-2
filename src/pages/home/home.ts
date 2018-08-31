@@ -1,5 +1,6 @@
 import { Component, ViewChild } from '@angular/core';
 import { NavController, Nav } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 import { HelpPage } from './../help/help';
 import { SolverPage } from '../../solver';
 
@@ -13,15 +14,16 @@ export class HomePage {
 
   items: any;
 
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, private storage: Storage) {
     this.items = [
-      { component: SolverPage, title: 'Solve', text: 'dive into the word solver', icon: 'play' },
-      { component: HelpPage, title: 'Help', text: 'learn how to use the app', icon: 'information-circle' }
+      { id: 'solver', component: SolverPage, title: 'Solve', text: 'dive into the word solver', icon: 'play' },
+      { id: 'help', component: HelpPage, title: 'Help', text: 'learn how to use the app', icon: 'information-circle' }
     ];
 
   }
 
   openPage(item) {
+    this.storage.set('currentPage', item.id);
     this.navCtrl.push(item.component);
   }
 }

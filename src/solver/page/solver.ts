@@ -48,6 +48,10 @@ export class SolverPage {
     })
   }
 
+  public routerCanReuse(): boolean {
+    return true;
+  }
+
   public async findMatch() {
     let characters = this.forms.value['characters'];
     let wordFormat = this.forms.value['wordFormat'];
