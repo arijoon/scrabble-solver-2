@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar color="primary">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -45,7 +45,7 @@
   </ion-card>
 
   <ion-fab right bottom>
-    <button ion-fab color="success" (click)="findMatch()" [hidden]="!forms.valid">
+    <button ion-fab (click)="findMatch()" [hidden]="!forms.valid">
       <ion-icon name="play"></ion-icon></button>
   </ion-fab>
 
